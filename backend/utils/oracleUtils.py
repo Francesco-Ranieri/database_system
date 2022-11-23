@@ -7,9 +7,14 @@ lib_dir = 'C:\\Users\\ranie\\Desktop\\workspace\\database_system\\instantclient-
 
 
 def get_db_connection():
-    cx_Oracle.init_oracle_client(lib_dir)
-    return cx_Oracle.connect(user, password, dns)
 
+    cx_Oracle.init_oracle_client(lib_dir=lib_dir)
+    pool = cx_Oracle.SessionPool(user=user, password=password,
+                                dsn=dns, min=2,
+                                max=5, increment=1, encoding="UTF-8")
+
+    # Acquire a connection from the pool
+    return pool.acquire()
 
 def retrieve_id(table_name: str):
     if table_name in ['FRUIT_TAB', 'FRESHNESS_TAB']:
