@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "bootstrap-4-grid": "^3.4.0",
+    "flask-cors": "^0.0.1"
+  }
+}

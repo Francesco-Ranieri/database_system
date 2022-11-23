@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+
+  oracle:
+    image: "doctorkirk/oracle-19c"
+    ports:
+      - "1521:1521"
+    volumes: 
+        - desktop_oracle-volume:/opt/oracle/oradata
+    environment:
+      - ORACLE_SID:ORCLCDB
+      - ORACLE_PWD:password
+   
+volumes:
+  desktop_oracle-volume:
+    external: true  

@@ -1,0 +1,23 @@
+
+<div class="card margin">
+  <div class="card-body">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+      <div *ngFor="let col of displayedColumns">
+        <ng-container matColumnDef="{{col}}">
+          <th mat-header-cell *matHeaderCellDef>{{col}}</th>
+          <td mat-cell *matCellDef="let element">{{element[col]}}</td>
+        </ng-container>
+      </div>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+          mat-row
+          (click)="update_id(row[displayedColumns[0]])"
+          [class.demo-row-is-clicked]="clickedRows.has(row)"
+          *matRowDef="let row; columns: displayedColumns;"
+      ></tr>
+    </table>
+    
+  </div>
+  </div>
