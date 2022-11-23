@@ -1,38 +1,14 @@
+<app-form 
+    [formFields] = "formFields"
+    [tableHeader]= "tableHeader"
+    (updateEvent)="onUpdate($event)"
+    (deleteEvent)="onDelete($event)"
+    ></app-form>
 
-<div class="card margin">
-    <h5 class="card-header">
-      TABLE INFO
-    </h5>
-    <div class="card-body">
-        <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
-            <div class="form">
-
-                <div class="row">
-                    <div class="col-sm">
-                        <label for="name">Table Name</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-lg example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">Fruit</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
-                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm">
-                        <input type="checkbox" class="form-check-input" id="terms" formControlName="terms" />
-                        <label class="form-check-label" for="terms">Agree to terms and conditions?</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-
-            </div>
-
-        </form>
-    </div>
-</div>
-      
+<div *ngIf="dataSource"></div>
+<app-table 
+    [dataSource]="dataSource"
+    [displayedColumns]="displayedColumns"
+    (selectionChangeEvent)="onChangeSelection($event)">
+</app-table>
+<div>

@@ -18,6 +18,8 @@ import { SensorSectionComponent } from './pages/tables-sections/sensor-section/s
 import { UserSectionComponent } from './pages/tables-sections/user-section/user-section.component';
 import { AllergySectionComponent } from './pages/tables-sections/allergy-section/allergy-section.component';
 import { MatTableModule } from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormComponent } from './components/form/form.component';
 
   
 @NgModule({
@@ -35,6 +37,7 @@ import { MatTableModule } from '@angular/material/table';
     SensorSectionComponent,
     FruitSensorSectionComponent,
     AllergySectionComponent,
+    FormComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { MatTableModule } from '@angular/material/table';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

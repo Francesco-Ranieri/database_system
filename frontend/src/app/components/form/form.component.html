@@ -1,0 +1,19 @@
+<div class="card margin">
+    <h5 class="card-header">
+      {{tableHeader}}
+    </h5>
+    <div class="card-body">
+        <form [formGroup]='formGroup'>
+            <div *ngFor='let formField of formFields' class='form-group'>
+                <div class="col-sm">
+                    <label> {{ formField.label }}</label>
+                    <input class='form-control' type='{{ formField.fieldType }}' [(ngModel)]='formField.value' formControlName="{{formField.fieldName}}"/>
+                    <br>
+                </div>
+            </div>
+            <button type='submit' (click)='onSubmit(formGroup.value)' class='btn btn-primary'>Update</button>
+            <button (click)='onDelete(formGroup.value)' class='btn btn-danger'>Delete</button>
+            <button type='reset' class='btn btn-light'>Reset</button>
+        </form>
+    </div>
+</div>

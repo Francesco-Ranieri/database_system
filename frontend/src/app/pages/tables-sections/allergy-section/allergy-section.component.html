@@ -1,43 +1,9 @@
-<div class="card margin">
-    <h5 class="card-header">
-      ALLERGY TABLE INFO
-    </h5>
-    <div class="card-body">
-        <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
-            <div class="form">
-
-                <div class="row">
-
-                    <div class="col-sm">
-                        <label for="name">ID</label>
-                        <input class="form-control" type="text" id="id"  formControlName="id">
-                    </div>
-                    
-                    <div class="col-sm">
-                        <label for="name">Name</label>
-                        <input class="form-control" type="text" id="name"  formControlName="name" placeholder="Default input">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm">
-                        <label for="name">Sympthoms</label>
-                        <textarea class="form-control textarea" id="sympthoms"  formControlName="sympthoms" rows="3"></textarea>
-                    </div>
-                
-                </div>
-
-                <div class="row">
-                    <div class="col-sm">
-                        <input class="btn btn-primary" type = "submit" value = "Insert">
-                    </div>
-                </div>
-                
-            </div>
-
-        </form>
-    </div>
-</div>
+<app-form 
+    [formFields] = "formFields"
+    [tableHeader]= "tableHeader"
+    (updateEvent)="onUpdate($event)"
+    (deleteEvent)="onDelete($event)"
+    ></app-form>
 
 <div *ngIf="dataSource"></div>
 <app-table 

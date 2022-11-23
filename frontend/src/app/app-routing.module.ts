@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, Router } from '@angular/router';
+import { FormComponent } from './components/form/form.component';
+import { TableComponent } from './components/table/table.component';
 import { RouterComponent } from './pages/router/router.component';
 import { TableOverviewComponent } from './pages/table-overview/table-overview.component';
 import { AllergySectionComponent } from './pages/tables-sections/allergy-section/allergy-section.component';
@@ -66,9 +68,8 @@ const routes: Routes = [
 
   {
     path: 'test',
-    component: TableOverviewComponent
+    component: FormComponent
   }
-  
   
 ];
   
