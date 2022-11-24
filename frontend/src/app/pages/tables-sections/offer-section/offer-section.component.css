@@ -1,0 +1,21 @@
+.row {
+    margin-bottom: 2%
+}
+
+.margin{
+    margin-top: 2%;
+}
+
+.card{
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.btn{
+    width: 10%;
+}
+
+.textarea{
+    width: 50%;
+}

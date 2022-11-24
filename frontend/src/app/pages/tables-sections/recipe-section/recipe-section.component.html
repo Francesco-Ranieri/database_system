@@ -1,1 +1,14 @@
-<p>recipe-section works!</p>
+<app-form 
+    [formFields] = "formFields"
+    [tableHeader]= "tableHeader"
+    (updateEvent)="onUpdate($event)"
+    (deleteEvent)="onDelete($event)"
+    ></app-form>
+
+<div *ngIf="dataSource"></div>
+<app-table 
+    [dataSource]="dataSource"
+    [displayedColumns]="displayedColumns"
+    (selectionChangeEvent)="onChangeSelection($event)">
+</app-table>
+<div>

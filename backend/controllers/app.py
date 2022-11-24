@@ -30,7 +30,7 @@ def get_all_table():
 
 
 @app.route('/get-all-info/<table_name>/<id>')
-def get_all_table_per_id(table_name:str, id:int):
+def get_all_table_per_id(table_name:str, id):
     return collect_info_per_id(table_name, id, connection)
 
 

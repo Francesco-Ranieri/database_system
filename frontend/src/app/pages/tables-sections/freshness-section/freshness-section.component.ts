@@ -4,23 +4,23 @@ import { FormBuilder } from '@angular/forms';
 import { FormField } from 'src/app/models/form-field';
 
 @Component({
-  selector: 'app-offer-section',
-  templateUrl: './offer-section.component.html',
-  styleUrls: ['./offer-section.component.css']
+  selector: 'app-freshness-section',
+  templateUrl: './freshness-section.component.html',
+  styleUrls: ['./freshness-section.component.css']
 })
-export class OfferSectionComponent {
- 
-  tableHeader: string = "OFFER TABLE INFO" 
+export class FreshnessSectionComponent {
+  
+  tableHeader: string = "FRESHNESS TABLE INFO" 
   formFields: FormField[] = [
     {
-      label: 'ID',
-      fieldName: 'ID_OFFER',
+      label: 'NAME FRUIT',
+      fieldName: 'NAME_FRUIT',
       fieldType: 'text',
       value: ''
     },
     {
-      label: 'DISCOUNTED PRICE',
-      fieldName: 'DISCOUNTED_PRICE',
+      label: 'DAYS OF FRESHNESS',
+      fieldName: 'DAYS_FRESHNESS',
       fieldType: 'text',
       value: ''
     },
@@ -28,10 +28,10 @@ export class OfferSectionComponent {
 
   dataSource: [] = [];
   ids_avaiable: Set<string>[] = [];
-  displayedColumns: string[] =["ID_OFFER", "DISCOUNTED_PRICE"]
+  displayedColumns: string[] =["NAME_FRUIT", "DAYS_FRESHNESS"]
 
   base_url = "http://127.0.0.1:5000/"
-  table_name = "OFFER_TAB"
+  table_name = "FRESHNESS_TAB"
   url_get_all_info = this.base_url + "get-all-info/" + this.table_name;
   url_insert = this.base_url + "insert/" + this.table_name;
   url_update = this.base_url + "update/" + this.table_name;

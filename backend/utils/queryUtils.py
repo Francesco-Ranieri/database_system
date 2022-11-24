@@ -6,10 +6,10 @@ wildcard = '?'
 select_all = 'SELECT * FROM ?'
 select_attributes = 'SELECT ? FROM ?'
 get_all_table_name = 'select table_name from all_all_tables where owner=\'FRUIT\''
-select_detail = 'SELECT * FROM ? WHERE ? = ?'
+select_detail = 'SELECT * FROM ? WHERE ? = \'?\''
 insert_row = 'INSERT INTO ? (?) VALUES (?)'
-update_row = 'UPDATE ? SET ? WHERE ? = ?'
-delete_row = 'DELETE FROM ? WHERE ? = ?'
+update_row = 'UPDATE ? SET ? WHERE ? = \'?\''
+delete_row = 'DELETE FROM ? WHERE ? = \'?\''
 
 
 def replace_query_wildcards(query: str, attributes: list, table_name: str):
@@ -48,7 +48,7 @@ def update_row_query(table_name: str, body:json):
         set_section += f"{field} = \'{values}\',"
     query = replace_query_wildcard(query, set_section[:-1])
     query = replace_query_wildcard(query, id_name)
-    return replace_query_wildcard(query, f"\'{body[id_name]}\'")
+    return replace_query_wildcard(query, f"{body[id_name]}")
 
 
 def delete_row_query(table_name:str, id:int):

@@ -1,14 +1,22 @@
-<div class="card margin">
+<div class="card mt-5">
     <h5 class="card-header">
       {{tableHeader}}
     </h5>
     <div class="card-body">
         <form [formGroup]='formGroup'>
-            <div *ngFor='let formField of formFields' class='form-group'>
-                <div class="col-sm">
+            <div class ="row">
+                <div class="col-3 col-sm-3 col-md-3 col-lg-3 mb-3" *ngFor='let formField of formFields'>            
                     <label> {{ formField.label }}</label>
-                    <input class='form-control' type='{{ formField.fieldType }}' [(ngModel)]='formField.value' formControlName="{{formField.fieldName}}"/>
-                    <br>
+                    <div *ngIf="formField.fieldType == 'SELECT'">
+                        <select class="form-select" [(ngModel)]='formField.value' formControlName="{{formField.fieldName}}">
+                            <option value="True" selected>True</option>
+                            <option value="False">False</option>
+                          </select>
+                    </div>
+                    <div *ngIf="formField.fieldType != 'SELECT'">
+                        <input class='form-control' type='{{ formField.fieldType }}' 
+                        [(ngModel)]='formField.value' formControlName="{{formField.fieldName}}"/>
+                    </div>
                 </div>
             </div>
             <button type='submit' (click)='onSubmit(formGroup.value)' class='btn btn-primary'>Update</button>
@@ -17,3 +25,6 @@
         </form>
     </div>
 </div>
+
+
+                

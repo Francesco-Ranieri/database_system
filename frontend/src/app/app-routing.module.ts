@@ -5,6 +5,7 @@ import { TableComponent } from './components/table/table.component';
 import { RouterComponent } from './pages/router/router.component';
 import { TableOverviewComponent } from './pages/table-overview/table-overview.component';
 import { AllergySectionComponent } from './pages/tables-sections/allergy-section/allergy-section.component';
+import { FreshnessSectionComponent } from './pages/tables-sections/freshness-section/freshness-section.component';
 import { FruitRecipeSectionComponent } from './pages/tables-sections/fruit-recipe-section/fruit-recipe-section.component';
 import { FruitSectionComponent } from './pages/tables-sections/fruit-section/fruit-section.component';
 import { FruitSensorSectionComponent } from './pages/tables-sections/fruit-sensor-section/fruit-sensor-section.component';
@@ -17,7 +18,7 @@ import { UserSectionComponent } from './pages/tables-sections/user-section/user-
 const routes: Routes = [
 
   { 
-    path: 'operations', 
+    path: '', 
     component: RouterComponent   
   },
 
@@ -64,6 +65,11 @@ const routes: Routes = [
   {
     path: 'ALLERGY_TAB_info',
     component: AllergySectionComponent
+  },
+
+  {
+    path: 'FRESHNESS_TAB_info',
+    component: FreshnessSectionComponent
   },
 
   {

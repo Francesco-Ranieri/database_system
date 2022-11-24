@@ -20,6 +20,9 @@ import { AllergySectionComponent } from './pages/tables-sections/allergy-section
 import { MatTableModule } from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormComponent } from './components/form/form.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import { FreshnessSectionComponent } from './pages/tables-sections/freshness-section/freshness-section.component';
 
   
 @NgModule({
@@ -38,6 +41,7 @@ import { FormComponent } from './components/form/form.component';
     FruitSensorSectionComponent,
     AllergySectionComponent,
     FormComponent,
+    FreshnessSectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,8 @@ import { FormComponent } from './components/form/form.component';
     ReactiveFormsModule,
     MatTableModule,
     MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
