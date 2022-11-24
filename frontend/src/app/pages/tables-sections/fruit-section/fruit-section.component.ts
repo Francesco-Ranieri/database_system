@@ -20,7 +20,7 @@ export class FruitSectionComponent {
     },
     {
       label: 'EDIBLE PEEL',
-      fieldName: 'IS_EDIBLE',
+      fieldName: 'IS_PEEL_EDIBLE',
       fieldType: 'SELECT',
       value: ''
     },
@@ -31,13 +31,13 @@ export class FruitSectionComponent {
       value: ''
     },
     {
-      label: 'WEIGHT',
+      label: 'WEIGHT [KG]',
       fieldName: 'WEIGHT',
       fieldType: 'TEXT',
       value: ''
     },
     {
-      label: 'VOLUME',
+      label: 'VOLUME [#]',
       fieldName: 'VOLUME',
       fieldType: 'TEXT',
       value: ''
@@ -55,8 +55,14 @@ export class FruitSectionComponent {
       value: ''
     },
     {
-      label: 'PRICE',
+      label: 'PRICE [€]',
       fieldName: 'PRICE',
+      fieldType: 'TEXT',
+      value: ''
+    },
+    {
+      label: 'BASE PRICE [€]',
+      fieldName: 'BASE_PRICE',
       fieldType: 'TEXT',
       value: ''
     },
@@ -83,7 +89,7 @@ export class FruitSectionComponent {
 
   dataSource: [] = [];
   ids_avaiable: Set<string>[] = [];
-  displayedColumns: string[] =["NAME_FRUIT", "IS_EDIBLE", "DATE_ARRIVAL", "WEIGHT", "VOLUME", "DIMENSION", "RIPENS_LEVEL", "PRICE", "ALLERGY_FK", "OFFER_FK", "FRESHNESS_FK"]
+  displayedColumns: string[] =["NAME_FRUIT", "IS_PEEL_EDIBLE", "DATE_ARRIVAL", "WEIGHT", "VOLUME", "DIMENSION", "RIPENS_LEVEL", "PRICE", "BASE_PRICE", "ALLERGY_FK", "OFFER_FK", "FRESHNESS_FK", "IS_FRESH"]
 
   base_url = "http://127.0.0.1:5000/"
   table_name = "FRUIT_TAB"
@@ -91,6 +97,7 @@ export class FruitSectionComponent {
   url_insert = this.base_url + "insert/" + this.table_name;
   url_update = this.base_url + "update/" + this.table_name;
   url_delete = this.base_url + "delete/" + this.table_name;
+  isUserOperator = true;
 
   constructor(private http:HttpClient, private formBuilder: FormBuilder) {    
     this.get_all_tables()
@@ -151,4 +158,17 @@ export class FruitSectionComponent {
       this.get_all_tables()
     });
   }
+
+  onChangeUserType(){
+    if(!this.isUserOperator) {
+      this.url_get_all_info = "http://localhost:5000/get-all-info/FRUIT_TAB_CUSTOMER"
+      this.displayedColumns =["NAME_FRUIT", "IS_PEEL_EDIBLE", "WEIGHT", "VOLUME", "DIMENSION", "RIPENS_LEVEL", "PRICE", "ALLERGY_FK", "OFFER_FK", "FRESHNESS_FK"]
+    }
+    else {
+      this.url_get_all_info = "http://localhost:5000/get-all-info/FRUIT_TAB"
+      this.displayedColumns = ["NAME_FRUIT", "IS_PEEL_EDIBLE", "DATE_ARRIVAL", "WEIGHT", "VOLUME", "DIMENSION", "RIPENS_LEVEL", "PRICE", "BASE_PRICE", "ALLERGY_FK", "OFFER_FK", "FRESHNESS_FK", "IS_FRESH"]
+    }
+    this.get_all_tables()
+  }
+
 }

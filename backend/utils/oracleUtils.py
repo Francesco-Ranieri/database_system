@@ -3,7 +3,7 @@ import cx_Oracle
 user = 'FRUIT'
 password = 'FRUIT'
 dns = 'localhost:1521/ORCLCDB'
-lib_dir = 'C:\\Users\\ranie\\Desktop\\workspace\\database_system\\instantclient-basic-windows\\instantclient_21_7'
+lib_dir = 'C:\\Users\\ranie\\Desktop\\workspace\\database_system\\resources\\instantclient-basic-windows\\instantclient_21_7'
 
 
 def get_db_connection():

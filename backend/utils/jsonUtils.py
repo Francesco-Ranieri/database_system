@@ -10,7 +10,6 @@ def query_to_json_format(cursor):
         result = {}
         for index, value in enumerate(elem):
             field = cursor.description[index][0]
-            print(value)
             if "DATE" in field:
                 result[field] = str(value).split(" ")[0]
             else:
