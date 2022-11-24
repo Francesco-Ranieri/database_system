@@ -80,8 +80,6 @@ export class AllergySectionComponent {
 
   onUpdate(obj: any) {
     let id = obj[this.displayedColumns[0]];
-    console.log(obj)
-    console.log(this.displayedColumns)
     if(this.ids_avaiable.includes(id)) {
       console.log("UPDATE")
       this.http.post(this.url_update, obj).toPromise().then((r:any) => {

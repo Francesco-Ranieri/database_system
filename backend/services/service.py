@@ -2,6 +2,7 @@ from utils.oracleUtils import get_db_connection
 from utils.jsonUtils import query_to_json_format
 from utils.queryUtils import *
 
+
 def collect_all_info(table_name: str, connection):
     query = get_select_all_query(table_name)
     return query_to_json_format(execute_query(connection, query))
@@ -33,6 +34,7 @@ def delete_existing_row(table_name, id, connection):
     query = delete_row_query(table_name, id)
     print(f"-------------DELETE \n\n{query}\n\n-------------\n")
     execute_query(connection, query)
+
 
 def execute_query(connection, query):
     cursor = connection.cursor()
