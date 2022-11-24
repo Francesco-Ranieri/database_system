@@ -1,5 +1,5 @@
-from utils.oracleUtils import get_db_connection
-from utils.jsonUtils import query_to_json_format
+from utils.oracleUtils import *
+from utils.jsonUtils import *
 from utils.queryUtils import *
 
 
@@ -18,16 +18,16 @@ def collect_info_per_id(table_name: str, id:int, connection):
     return query_to_json_format(execute_query(connection, query))
 
 
-def insert_new_row(table_name, body, connection):
+def insert_new_row(table_name, body:json, connection):
     query = insert_row_query(table_name, body)
     print(f"-------------INSERT \n\n{query}\n\n-------------\n")
-    execute_query(connection, query)
+    execute_query(connection, query, body)
 
 
 def update_existing_row(table_name, body, connection):
     query = update_row_query(table_name, body)
     print(f"-------------UPDATE \n\n{query}\n\n-------------\n")
-    execute_query(connection, query)
+    execute_query(connection, query, body)
 
 
 def delete_existing_row(table_name, id, connection):
@@ -36,7 +36,16 @@ def delete_existing_row(table_name, id, connection):
     execute_query(connection, query)
 
 
-def execute_query(connection, query):
+def get_expiring_fruits(date, connection):
+    print(f"-------------EXPIRING FRUITS-------------\n")
+    body = date_to_json(date)
+    return query_to_json_format(execute_query(connection, get_expiring_fruit, body))
+
+
+def execute_query(connection, query, body={}):
     cursor = connection.cursor()
-    cursor.execute(query)
+    if body:
+        cursor.execute(query, normalize_body(body))
+    else:
+        cursor.execute(query)
     return cursor

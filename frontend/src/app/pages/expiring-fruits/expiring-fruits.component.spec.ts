@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableOverviewComponent } from './table-overview.component';
+import { ExpiringFruitsComponent } from './expiring-fruits.component';
 
-describe('TableOverviewComponent', () => {
-  let component: TableOverviewComponent;
-  let fixture: ComponentFixture<TableOverviewComponent>;
+describe('ExpiringFruitsComponent', () => {
+  let component: ExpiringFruitsComponent;
+  let fixture: ComponentFixture<ExpiringFruitsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableOverviewComponent ]
+      declarations: [ ExpiringFruitsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TableOverviewComponent);
+    fixture = TestBed.createComponent(ExpiringFruitsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

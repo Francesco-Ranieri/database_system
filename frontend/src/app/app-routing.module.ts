@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, Router } from '@angular/router';
 import { FormComponent } from './components/form/form.component';
-import { TableComponent } from './components/table/table.component';
+import { ExpiringFruitsComponent } from './pages/expiring-fruits/expiring-fruits.component';
 import { RouterComponent } from './pages/router/router.component';
-import { TableOverviewComponent } from './pages/table-overview/table-overview.component';
 import { AllergySectionComponent } from './pages/tables-sections/allergy-section/allergy-section.component';
 import { FreshnessSectionComponent } from './pages/tables-sections/freshness-section/freshness-section.component';
 import { FruitRecipeSectionComponent } from './pages/tables-sections/fruit-recipe-section/fruit-recipe-section.component';
@@ -73,8 +72,8 @@ const routes: Routes = [
   },
 
   {
-    path: 'test',
-    component: FormComponent
+    path: 'EXPIRING_FRUITS_info',
+    component: ExpiringFruitsComponent
   }
   
 ];

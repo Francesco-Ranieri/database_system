@@ -25,6 +25,12 @@ export class SensorSectionComponent {
       value: ''
     },
     {
+      label: 'SCAN DIMENSION',
+      fieldName: 'SCAN_DIMENSION',
+      fieldType: 'text',
+      value: ''
+    },
+    {
       label: 'MEDIUM_CONSUMPTION [€\\h]',
       fieldName: 'MEDIUM_CONSUMPTION',
       fieldType: 'text',
@@ -46,7 +52,7 @@ export class SensorSectionComponent {
 
   dataSource: [] = [];
   ids_avaiable: Set<string>[] = [];
-  displayedColumns: string[] =["ID_SENSOR", "NAME", "MEDIUM_CONSUMPTION", "COST", "BRAND"]
+  displayedColumns: string[] =["ID_SENSOR", "NAME", "SCAN_DIMENSION", "MEDIUM_CONSUMPTION", "COST", "BRAND"]
 
   base_url = "http://127.0.0.1:5000/"
   table_name = "SENSOR_TAB"

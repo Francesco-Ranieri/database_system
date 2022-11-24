@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TableComponent } from './components/table/table.component';
-import { TableOverviewComponent } from './pages/table-overview/table-overview.component';
 import { RouterComponent } from './pages/router/router.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,13 +22,13 @@ import { FormComponent } from './components/form/form.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import { FreshnessSectionComponent } from './pages/tables-sections/freshness-section/freshness-section.component';
+import { ExpiringFruitsComponent } from './pages/expiring-fruits/expiring-fruits.component';
 
   
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
-    TableOverviewComponent,
     RouterComponent,
     FruitSectionComponent,
     RecipeSectionComponent,
@@ -42,6 +41,7 @@ import { FreshnessSectionComponent } from './pages/tables-sections/freshness-sec
     AllergySectionComponent,
     FormComponent,
     FreshnessSectionComponent,
+    ExpiringFruitsComponent,
   ],
   imports: [
     BrowserModule,

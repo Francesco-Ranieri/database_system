@@ -1,6 +1,7 @@
 import json
 from flask_cors import CORS
 from flask import Flask, request
+from datetime import datetime
 
 import sys
 sys.path.append('..')
@@ -55,6 +56,14 @@ def delete_table_info(table_name:str, id:int):
     delete_existing_row(table_name, id, connection)
     connection.commit()
     return {"status": "OK"}
+
+
+@app.route('/get_expiring_fruits', methods=['GET'])
+def get_expiring_fruits_info():
+    today_date = datetime.date(datetime.now())
+    res = get_expiring_fruits(today_date, connection)
+    connection.commit()
+    return res
 
 if __name__== "__main__":
     app.run(debug=True)

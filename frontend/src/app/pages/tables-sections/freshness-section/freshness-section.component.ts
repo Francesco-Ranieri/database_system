@@ -13,8 +13,8 @@ export class FreshnessSectionComponent {
   tableHeader: string = "FRESHNESS TABLE INFO" 
   formFields: FormField[] = [
     {
-      label: 'NAME FRUIT',
-      fieldName: 'NAME_FRUIT',
+      label: 'ID',
+      fieldName: 'ID_FRESHNESS',
       fieldType: 'text',
       value: ''
     },
@@ -28,7 +28,7 @@ export class FreshnessSectionComponent {
 
   dataSource: [] = [];
   ids_avaiable: Set<string>[] = [];
-  displayedColumns: string[] =["NAME_FRUIT", "DAYS_FRESHNESS"]
+  displayedColumns: string[] =["ID_FRESHNESS", "DAYS_FRESHNESS"]
 
   base_url = "http://127.0.0.1:5000/"
   table_name = "FRESHNESS_TAB"
