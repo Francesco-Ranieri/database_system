@@ -6,7 +6,6 @@ def query_to_json_format(cursor):
     res = {}
     response = []
     for elem in cursor:
-        print(elem)
         result = {}
         for index, value in enumerate(elem):
             field = cursor.description[index][0]

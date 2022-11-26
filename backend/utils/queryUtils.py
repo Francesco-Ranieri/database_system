@@ -10,6 +10,7 @@ select_detail = 'SELECT * FROM ? WHERE ? = \'?\''
 insert_row = 'INSERT INTO ? (?) VALUES (?)'
 update_row = 'UPDATE ? SET ? WHERE ? = \'?\''
 delete_row = 'DELETE FROM ? WHERE ? = \'?\''
+buy_offer_fruit = 'UPDATE FRUIT_TAB SET WEIGHT = WEIGHT - :weight WHERE NAME_FRUIT = :name_fruit'
 get_expiring_fruit = '''
 SELECT DISTINCT
     F.DATE_ARRIVAL + FR.DAYS_FRESHNESS AS EXPIRATION_DATE,

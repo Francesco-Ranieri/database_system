@@ -73,12 +73,6 @@ export class FruitSectionComponent {
       value: ''
     },
     {
-      label: 'OFFER ID',
-      fieldName: 'OFFER_FK',
-      fieldType: 'TEXT',
-      value: ''
-    },
-    {
       label: 'FRESHNESS ID',
       fieldName: 'FRESHNESS_FK',
       fieldType: 'TEXT',
@@ -89,7 +83,7 @@ export class FruitSectionComponent {
 
   dataSource: [] = [];
   ids_avaiable: Set<string>[] = [];
-  displayedColumns: string[] =["NAME_FRUIT", "IS_PEEL_EDIBLE", "DATE_ARRIVAL", "WEIGHT", "VOLUME", "DIMENSION", "RIPENS_LEVEL", "PRICE", "BASE_PRICE", "ALLERGY_FK", "OFFER_FK", "FRESHNESS_FK", "IS_FRESH"]
+  displayedColumns: string[] =["NAME_FRUIT", "IS_PEEL_EDIBLE", "DATE_ARRIVAL", "WEIGHT", "VOLUME", "DIMENSION", "RIPENS_LEVEL", "PRICE", "BASE_PRICE", "ALLERGY_FK", "FRESHNESS_FK", "IS_FRESH"]
 
   base_url = "http://127.0.0.1:5000/"
   table_name = "FRUIT_TAB"
@@ -161,12 +155,12 @@ export class FruitSectionComponent {
 
   onChangeUserType(){
     if(!this.isUserOperator) {
-      this.url_get_all_info = "http://localhost:5000/get-all-info/FRUIT_TAB_CUSTOMER"
-      this.displayedColumns =["NAME_FRUIT", "IS_PEEL_EDIBLE", "WEIGHT", "VOLUME", "DIMENSION", "RIPENS_LEVEL", "PRICE", "ALLERGY_FK", "OFFER_FK", "FRESHNESS_FK"]
+      this.url_get_all_info = this.base_url + "get-all-info/" + "FRUIT_TAB_CUSTOMER";
+      this.displayedColumns =["NAME_FRUIT", "IS_PEEL_EDIBLE", "WEIGHT", "VOLUME", "DIMENSION", "RIPENS_LEVEL", "PRICE", "NAME_ALLERGY", "EXPIRATION_DAY"];
     }
     else {
-      this.url_get_all_info = "http://localhost:5000/get-all-info/FRUIT_TAB"
-      this.displayedColumns = ["NAME_FRUIT", "IS_PEEL_EDIBLE", "DATE_ARRIVAL", "WEIGHT", "VOLUME", "DIMENSION", "RIPENS_LEVEL", "PRICE", "BASE_PRICE", "ALLERGY_FK", "OFFER_FK", "FRESHNESS_FK", "IS_FRESH"]
+      this.url_get_all_info = this.base_url + "get-all-info/" + this.table_name;
+      this.displayedColumns = ["NAME_FRUIT", "IS_PEEL_EDIBLE", "DATE_ARRIVAL", "WEIGHT", "VOLUME", "DIMENSION", "RIPENS_LEVEL", "PRICE", "BASE_PRICE", "ALLERGY_FK", "FRESHNESS_FK", "IS_FRESH"]
     }
     this.get_all_tables()
   }

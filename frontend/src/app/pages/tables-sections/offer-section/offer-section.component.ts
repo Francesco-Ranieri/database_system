@@ -19,8 +19,20 @@ export class OfferSectionComponent {
       value: ''
     },
     {
-      label: 'DISCOUNTED PRICE',
+      label: 'DISCOUNTED PRICE [€]',
       fieldName: 'DISCOUNTED_PRICE',
+      fieldType: 'text',
+      value: ''
+    },
+    {
+      label: 'DISCOUNTED WEIGHT [KG]',
+      fieldName: 'DISCOUNTED_WEIGHT',
+      fieldType: 'text',
+      value: ''
+    },
+    {
+      label: 'FRUIT NAME',
+      fieldName: 'FRUIT_FK',
       fieldType: 'text',
       value: ''
     },
@@ -28,7 +40,7 @@ export class OfferSectionComponent {
 
   dataSource: [] = [];
   ids_avaiable: Set<string>[] = [];
-  displayedColumns: string[] =["ID_OFFER", "DISCOUNTED_PRICE"]
+  displayedColumns: string[] =["ID_OFFER", "DISCOUNTED_PRICE", "DISCOUNTED_WEIGHT", "FRUIT_FK", "STATUS"]
 
   base_url = "http://127.0.0.1:5000/"
   table_name = "OFFER_TAB"
@@ -36,6 +48,9 @@ export class OfferSectionComponent {
   url_insert = this.base_url + "insert/" + this.table_name;
   url_update = this.base_url + "update/" + this.table_name;
   url_delete = this.base_url + "delete/" + this.table_name;
+  url_buy = this.base_url + "buy-offer-fruit";
+  isUserOperator = true;
+  canBuy = true;
 
   constructor(private http:HttpClient, private formBuilder: FormBuilder) {    
     this.get_all_tables()
@@ -72,9 +87,11 @@ export class OfferSectionComponent {
   }
 
   onUpdate(obj: any) {
-    let id = obj[this.displayedColumns[0]];
+    let id_key = this.displayedColumns[0]
+    let id = obj[id_key];
     console.log(obj)
-    console.log(this.displayedColumns)
+    delete obj.ID_OFFER  //remove id becouse this table has autoincrement id
+    console.log(obj)
     if(this.ids_avaiable.includes(id)) {
       console.log("UPDATE")
       this.http.post(this.url_update, obj).toPromise().then((r:any) => {
@@ -89,10 +106,28 @@ export class OfferSectionComponent {
   }
 
   onDelete(obj: any) {
+    if(this.isUserOperator) {
+      this.deleteOffer(obj);
+    } else {
+      if(this.ids_avaiable.includes(obj['ID_OFFER'])) {
+        this.buyOffer(obj);
+      } else {
+        alert("OFFER DOES NOT EXIST")
+      }
+    }
+  } 
+
+  deleteOffer(obj:any) {
     let id = obj[this.displayedColumns[0]];
     console.log("DELETE")
     let url = this.url_delete + "/" + id;
     this.http.post(url, {}).toPromise().then((r:any) => {
+      this.get_all_tables()
+    });
+  }
+
+  buyOffer(obj:any) {
+    this.http.post(this.url_buy, obj).toPromise().then((r:any) => {
       this.get_all_tables()
     });
   }

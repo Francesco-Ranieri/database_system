@@ -26,3 +26,8 @@
   .demo-row-is-clicked {
     font-weight: bold;
   }
+
+  table{
+    table-layout: fixed;
+    width: 100%;
+  }

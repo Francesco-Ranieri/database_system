@@ -19,8 +19,10 @@
                     </div>
                 </div>
             </div>
-            <button type='submit' (click)='onSubmit(formGroup.value)' class='btn btn-primary'>Insert</button>
-            <button (click)='onDelete(formGroup.value)' class='btn btn-danger'>Delete</button>
+            <button type='submit' (click)='onSubmit(formGroup.value)' *ngIf="isUserOperator" class='btn btn-primary'>Insert</button>
+            <button (click)='onDelete(formGroup.value)' 
+                [ngClass]="isUserOperator ? 'btn btn-danger' : 'btn btn-success'">
+                <span>{{ canBuy && !isUserOperator? "Buy" : "Delete" }}</span></button>
             <button type='reset' class='btn btn-light'>Reset</button>
         </form>
     </div>

@@ -36,10 +36,16 @@ def delete_existing_row(table_name, id, connection):
     execute_query(connection, query)
 
 
-def get_expiring_fruits(date, connection):
+def get_expiring_fruits(connection):
     print(f"-------------EXPIRING FRUITS-------------\n")
-    body = date_to_json(date)
+    today_date = datetime.date(datetime.now())
+    body = date_to_json(today_date)
     return query_to_json_format(execute_query(connection, get_expiring_fruit, body))
+
+
+def buy_fruit(body, connection):
+    print(f"-------------BUY FRUITS-------------\n")
+    execute_query(connection, buy_offer_fruit, {"weight": body["DISCOUNTED_WEIGHT"], "name_fruit": body['FRUIT_FK']})
 
 
 def execute_query(connection, query, body={}):

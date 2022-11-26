@@ -43,7 +43,7 @@ def insert_table_info(table_name:str):
     return {"status": "OK"}
 
 
-@app.route('/update/<table_name>', methods=['POST'])
+@app.route('/update/<table_name>', methods=['POST'])    # should be a 'put' but cors problem <3
 def update_table_info(table_name:str):
     req_data = request.json
     update_existing_row(table_name, req_data, connection)
@@ -51,7 +51,7 @@ def update_table_info(table_name:str):
     return {"status": "OK"}
 
 
-@app.route('/delete/<table_name>/<id>', methods=['POST'])
+@app.route('/delete/<table_name>/<id>', methods=['POST'])       # should be a 'delete' but cors problem <3
 def delete_table_info(table_name:str, id:int):
     delete_existing_row(table_name, id, connection)
     connection.commit()
@@ -60,10 +60,18 @@ def delete_table_info(table_name:str, id:int):
 
 @app.route('/get_expiring_fruits', methods=['GET'])
 def get_expiring_fruits_info():
-    today_date = datetime.date(datetime.now())
-    res = get_expiring_fruits(today_date, connection)
+    res = get_expiring_fruits(connection)
     connection.commit()
     return res
+
+
+@app.route('/buy-offer-fruit', methods=['POST'])
+def buy_fruit_customer():
+    body = request.json
+    buy_fruit(body, connection)
+    delete_existing_row('OFFER_TAB', f"{body['ID_OFFER']}", connection)
+    return {"status": "OK"}
+
 
 if __name__== "__main__":
     app.run(debug=True)

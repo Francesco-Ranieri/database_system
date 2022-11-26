@@ -11,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
 export class FormComponent implements OnInit{
   @Input() formFields: FormField[] = [];
   @Input() tableHeader: string = '';
+  @Input() isUserOperator: boolean = true;
+  @Input() canBuy: boolean = false;
   @Output() updateEvent = new EventEmitter<string>();
   @Output() deleteEvent = new EventEmitter<string>();
 
