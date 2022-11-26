@@ -69,7 +69,7 @@ def get_expiring_fruits_info():
 def buy_fruit_customer():
     body = request.json
     buy_fruit(body, connection)
-    delete_existing_row('OFFER_TAB', f"{body['ID_OFFER']}", connection)
+    connection.commit()
     return {"status": "OK"}
 
 

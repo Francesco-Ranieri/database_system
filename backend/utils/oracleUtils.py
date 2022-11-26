@@ -19,4 +19,6 @@ def get_db_connection():
 def retrieve_id(table_name: str):
     if table_name in ['FRUIT_TAB']:
         return 'NAME_FRUIT' 
+    if table_name in ['OFFER_CUSTOMER_TAB']:
+        return 'ID_OFFER' 
     return 'ID_' + '_'.join(table_name.split('_')[:-1])

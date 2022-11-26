@@ -8,7 +8,7 @@
     ></app-form>
 
 <div class="form-check form-switch col-3 checkbox-card">
-    <input class="form-check-input" [(ngModel)]="isUserOperator" type="checkbox" id="flexSwitchCheckDefault">
+    <input class="form-check-input" (change)="onChangeUserType()" [(ngModel)]="isUserOperator" type="checkbox" id="flexSwitchCheckDefault">
     <label class="form-check-label" for="flexSwitchCheckDefault">I'm an operator</label>
 </div>
 

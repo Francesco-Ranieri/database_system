@@ -46,6 +46,10 @@ def get_expiring_fruits(connection):
 def buy_fruit(body, connection):
     print(f"-------------BUY FRUITS-------------\n")
     execute_query(connection, buy_offer_fruit, {"weight": body["DISCOUNTED_WEIGHT"], "name_fruit": body['FRUIT_FK']})
+    body['STATUS'] = 'SOLD'
+    execute_query(connection, update_offer, body)
+    body_offer_user = {'OFFER_FK': body['ID_OFFER'], 'USER_FK':2}
+    insert_new_row('OFFER_USER_TAB', body_offer_user, connection)
 
 
 def execute_query(connection, query, body={}):

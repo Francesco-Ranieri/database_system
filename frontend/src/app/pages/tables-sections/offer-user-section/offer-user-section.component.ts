@@ -12,33 +12,15 @@ import { FormField } from 'src/app/models/form-field';
 export class OfferUserSectionComponent {
   
   tableHeader: string = "OFFER_USER TABLE INFO" 
-  formFields: FormField[] = [
-    {
-      label: 'ID',
-      fieldName: 'ID_OFFER_USER',
-      fieldType: 'text',
-      value: ''
-    },
-    {
-      label: 'OFFER ID',
-      fieldName: 'OFFER_FK',
-      fieldType: 'text',
-      value: ''
-    },
-    {
-      label: 'USER ID',
-      fieldName: 'USER_FK',
-      fieldType: 'text',
-      value: ''
-    }
-  ];
+  formFields: FormField[] = [];
 
   dataSource: [] = [];
   ids_avaiable: Set<string>[] = [];
-  displayedColumns: string[] =["ID_OFFER_USER", "OFFER_FK", "USER_FK"]
+  displayedColumns: string[] =["ID_OFFER_USER", "FRUIT_NAME", "NAME", "SURNAME", "DISCOUNTED_WEIGHT", "DISCOUNTED_PRICE"]
+
 
   base_url = "http://127.0.0.1:5000/"
-  table_name = "OFFER_USER_TAB"
+  table_name = "USER_OFFER_CUSTOMER_TAB"
   url_get_all_info = this.base_url + "get-all-info/" + this.table_name;
   url_insert = this.base_url + "insert/" + this.table_name;
   url_update = this.base_url + "update/" + this.table_name;

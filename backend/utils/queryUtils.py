@@ -11,6 +11,14 @@ insert_row = 'INSERT INTO ? (?) VALUES (?)'
 update_row = 'UPDATE ? SET ? WHERE ? = \'?\''
 delete_row = 'DELETE FROM ? WHERE ? = \'?\''
 buy_offer_fruit = 'UPDATE FRUIT_TAB SET WEIGHT = WEIGHT - :weight WHERE NAME_FRUIT = :name_fruit'
+update_offer = '''
+    UPDATE OFFER_TAB
+        SET 
+            DISCOUNTED_PRICE = :DISCOUNTED_PRICE,
+            DISCOUNTED_WEIGHT = :DISCOUNTED_WEIGHT, 
+            FRUIT_FK = :FRUIT_FK, 
+            STATUS = :STATUS
+        WHERE ID_OFFER = :ID_OFFER'''
 get_expiring_fruit = '''
 SELECT DISTINCT
     F.DATE_ARRIVAL + FR.DAYS_FRESHNESS AS EXPIRATION_DATE,

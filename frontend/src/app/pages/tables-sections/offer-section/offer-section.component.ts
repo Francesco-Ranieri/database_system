@@ -131,4 +131,14 @@ export class OfferSectionComponent {
       this.get_all_tables()
     });
   }
+
+  onChangeUserType(){
+    if(!this.isUserOperator) {
+      this.url_get_all_info = this.base_url + "get-all-info/" + "OFFER_CUSTOMER_TAB";
+    }
+    else {
+      this.url_get_all_info = this.base_url + "get-all-info/" + this.table_name;
+    }
+    this.get_all_tables()
+  }
 }
