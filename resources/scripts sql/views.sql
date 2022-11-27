@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  File created - Saturday-November-26-2022   
+--  File created - Sunday-November-27-2022   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for View FRUIT_TAB_CUSTOMER
@@ -35,9 +35,9 @@ WHERE status = 'ON SALE'
 --  DDL for View USER_OFFER_CUSTOMER_TAB
 --------------------------------------------------------
 
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "FRUIT"."USER_OFFER_CUSTOMER_TAB" ("ID_OFFER_USER", "FRUIT_NAME", "DISCOUNTED_WEIGHT", "DISCOUNTED_PRICE", "NAME", "SURNAME") AS 
-  SELECT
-    OU.ID_OFFER_USER,
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "FRUIT"."USER_OFFER_CUSTOMER_TAB" ("ID_OFFER", "FRUIT_NAME", "DISCOUNTED_WEIGHT", "DISCOUNTED_PRICE", "NAME", "SURNAME") AS 
+  SELECT DISTINCT
+    O.ID_OFFER,
     O.FRUIT_FK AS FRUIT_NAME,
     O.DISCOUNTED_WEIGHT,
     O.DISCOUNTED_PRICE,

@@ -43,7 +43,7 @@ def insert_table_info(table_name:str):
     return {"status": "OK"}
 
 
-@app.route('/update/<table_name>', methods=['POST'])    # should be a 'put' but cors problem <3
+@app.route('/update/<table_name>', methods=['POST'])
 def update_table_info(table_name:str):
     req_data = request.json
     update_existing_row(table_name, req_data, connection)
@@ -51,7 +51,7 @@ def update_table_info(table_name:str):
     return {"status": "OK"}
 
 
-@app.route('/delete/<table_name>/<id>', methods=['POST'])       # should be a 'delete' but cors problem <3
+@app.route('/delete/<table_name>/<id>', methods=['POST'])
 def delete_table_info(table_name:str, id:int):
     delete_existing_row(table_name, id, connection)
     connection.commit()

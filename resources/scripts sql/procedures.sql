@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  File created - Saturday-November-26-2022   
+--  File created - Sunday-November-27-2022   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Procedure FRESHNESS_CHECK
@@ -15,7 +15,7 @@ set define off;
 
 BEGIN
     FOR info IN c LOOP
-        IF (info.date_arrival + info.days_freshness) > to_date(CURRENT_DATE)
+        IF (info.date_arrival + info.days_freshness) < to_date(CURRENT_DATE)
             THEN 
                 dbms_output.put_line (info.name_fruit || ' EXPIRED');
                 UPDATE FRUIT_TAB 
@@ -56,7 +56,7 @@ set define off;
         SELECT * FROM FRUIT_TAB;
 BEGIN
     FOR fruit IN c LOOP
-        IF fruit.weight > 0
+        IF fruit.weight > 0 AND fruit.is_fresh = 'True'
             THEN
                 IF fruit.ripens_level > 0 AND fruit.ripens_level < 0.5 
                     THEN 
@@ -67,7 +67,8 @@ BEGIN
                                 fruit_fk = fruit.name_fruit,
                                 status = 'ON SALE' 
                             where 
-                                fruit_fk = fruit.name_fruit;
+                                fruit_fk = fruit.name_fruit
+                                AND status = 'ON SALE';
                         IF (sql%notfound)
                             THEN
                                 INSERT INTO OFFER_TAB(discounted_price, discounted_weight, fruit_fk)

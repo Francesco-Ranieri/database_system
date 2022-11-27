@@ -16,7 +16,7 @@ export class OfferUserSectionComponent {
 
   dataSource: [] = [];
   ids_avaiable: Set<string>[] = [];
-  displayedColumns: string[] =["ID_OFFER_USER", "FRUIT_NAME", "NAME", "SURNAME", "DISCOUNTED_WEIGHT", "DISCOUNTED_PRICE"]
+  displayedColumns: string[] =["ID_OFFER", "FRUIT_NAME", "NAME", "SURNAME", "DISCOUNTED_WEIGHT", "DISCOUNTED_PRICE"]
 
 
   base_url = "http://127.0.0.1:5000/"
