@@ -10,7 +10,17 @@ services:
     environment:
       - ORACLE_SID:ORCLCDB
       - ORACLE_PWD:password
-   
+
+  flask:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/backend
+    depends_on:
+      - oracle
+    command: ["../wait-for.sh", "oracle:1521", "--", "python", "app.py"]
+       
 volumes:
   desktop_oracle-volume:
     external: true  
