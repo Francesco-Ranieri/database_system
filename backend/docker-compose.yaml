@@ -6,21 +6,26 @@ services:
     ports:
       - "1521:1521"
     volumes: 
-        - desktop_oracle-volume:/opt/oracle/oradata
+       - desktop_oracle-volume:/opt/oracle/oradata
     environment:
       - ORACLE_SID:ORCLCDB
       - ORACLE_PWD:password
 
   flask:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     volumes:
-      - .:/backend
+      - flask-volume:/opt/flask/flaskdata
     depends_on:
-      - oracle
-    command: ["../wait-for.sh", "oracle:1521", "--", "python", "app.py"]
+      oracle:
+        condition: service_started
+    command: ["python", "controllers/app.py"]
        
 volumes:
   desktop_oracle-volume:
-    external: true  
+    external: true 
+  flask-volume:
+    external: true 

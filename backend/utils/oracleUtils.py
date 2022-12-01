@@ -3,12 +3,12 @@ import cx_Oracle
 user = 'FRUIT'
 password = 'FRUIT'
 dns = 'localhost:1521/ORCLCDB'
-lib_dir = 'C:\\Users\\ranie\\Desktop\\workspace\\database_system\\resources\\instantclient-basic-windows\\instantclient_21_7'
+lib_dir = 'instantclient_21_7'
 
 
 def get_db_connection():
 
-    cx_Oracle.init_oracle_client(lib_dir=lib_dir)
+    #cx_Oracle.init_oracle_client(lib_dir=lib_dir)
     pool = cx_Oracle.SessionPool(user=user, password=password,
                                 dsn=dns, min=2,
                                 max=5, increment=1, encoding="UTF-8")
